@@ -1,4 +1,4 @@
-import { NotificationsRepositoryInMemory } from '../../../test/repositories/notificationsRepositoryInMemory';
+import { NotificationsRepositoryInMemory } from '@test/repositories/notificationsRepositoryInMemory';
 import { SendNotification } from './sendNotification';
 
 const notificationsRepositoryInMemory = new NotificationsRepositoryInMemory();

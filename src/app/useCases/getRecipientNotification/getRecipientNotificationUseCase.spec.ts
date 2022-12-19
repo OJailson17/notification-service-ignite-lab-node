@@ -1,12 +1,12 @@
 import { makeNotification } from '@test/factories/notificationFactory';
 import { NotificationsRepositoryInMemory } from '@test/repositories/notificationsRepositoryInMemory';
-import { CountRecipientNotifications } from './countRecipientNotification';
+import { GetRecipientNotifications } from './getRecipientNotificationUseCase';
 
 const notificationsRepositoryInMemory = new NotificationsRepositoryInMemory();
 
-describe('Count recipient notifications', () => {
-  it('should be able count recipient notifications', async () => {
-    const countRecipientNotifications = new CountRecipientNotifications(
+describe('Get recipient notifications', () => {
+  it('should be able to get recipient notifications', async () => {
+    const getRecipientNotifications = new GetRecipientNotifications(
       notificationsRepositoryInMemory,
     );
 
@@ -22,10 +22,16 @@ describe('Count recipient notifications', () => {
       makeNotification({ recipientId: 'recipientId2' }),
     );
 
-    const { count } = await countRecipientNotifications.execute({
+    const { notifications } = await getRecipientNotifications.execute({
       recipientId: 'recipientId',
     });
 
-    expect(count).toEqual(2);
+    expect(notifications).toHaveLength(2);
+    expect(notifications).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ recipientId: 'recipientId' }),
+        expect.objectContaining({ recipientId: 'recipientId' }),
+      ]),
+    );
   });
 });

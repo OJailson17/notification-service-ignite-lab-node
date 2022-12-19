@@ -1,5 +1,5 @@
 import { NotificationsRepositoryInMemory } from '@test/repositories/notificationsRepositoryInMemory';
-import { SendNotification } from './sendNotification';
+import { SendNotification } from './sendNotificationUseCase';
 
 const notificationsRepositoryInMemory = new NotificationsRepositoryInMemory();
 

@@ -1,7 +1,7 @@
 import { makeNotification } from '@test/factories/notificationFactory';
 import { NotificationsRepositoryInMemory } from '@test/repositories/notificationsRepositoryInMemory';
-import { NotificationNotFound } from './errors/notificationNotFound';
-import { UnreadNotification } from './unreadNotification';
+import { NotificationNotFound } from '../errors/notificationNotFound';
+import { UnreadNotification } from './unreadNotificationUseCase';
 
 const notificationsRepositoryInMemory = new NotificationsRepositoryInMemory();
 
